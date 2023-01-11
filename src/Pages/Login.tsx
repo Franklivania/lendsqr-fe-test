@@ -9,16 +9,12 @@ import sign from '../assets/sign.svg'
 const Login = () => {
 
   const [showPassword, setShowPassword] = useState(false);
-  const [form, setForm] = useState({
-    email: '',
-    password: ''
-  })
   
   const navigate = useNavigate()
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>){
     event.preventDefault()
-    
+
     toast.success("Login Successful")
     
     setInterval(() => {

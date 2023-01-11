@@ -1,0 +1,86 @@
+@import '../App.scss';
+
+.topnav{
+    position: relative;
+    font-family: $font-sub;
+    width: $width;
+    padding: 2rem;
+    background: $main-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0.03rem 0.03rem 0.3rem rgba(($accent-color), 0.6);
+
+    h1{
+        display: flex;
+        align-items: center;
+        color: $text-color;
+        font-weight: 700;
+        font-size: $large-text-size;
+        font-family: $font-main;
+        img{
+            width: calc(($box-width) * 0.06);
+        }
+    }
+
+    label{
+        position: relative;
+        width: calc(($width) * 0.3);
+
+        input, button{
+            outline: none;
+            border: none;
+            padding: 1rem;
+        }
+        input{
+            border: 0.03rem solid $button-color;
+            width: $width;
+            font-size: $text-size;
+            border-top-left-radius: $small-border-radius;
+            border-bottom-left-radius: $small-border-radius;
+            color: $text-color;
+        }
+        button{
+            position: absolute;
+            top: -0.01rem;
+            right: calc(($width) * -0.02);
+            background: $button-color;
+            color: $main-color;
+            padding: 1.24rem 2rem;
+            border-top-right-radius: $small-border-radius;
+            border-bottom-right-radius: $small-border-radius;
+
+            &:hover{
+                background: $text-color;
+            }
+        }
+    }
+
+    .info{
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        width: calc(($width) * 0.2);
+        font-size: $text-size;
+        color: $text-color;
+
+        a{
+            color: $text-color;
+        }
+
+        button{
+            background: transparent;
+            border: none;
+            color: $text-color;
+
+            &:hover{
+                color: $button-color;
+            }
+        }
+
+        img{
+            border-radius: $radius;
+        }
+
+    }
+}
