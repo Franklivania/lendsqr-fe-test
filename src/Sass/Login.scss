@@ -1,0 +1,130 @@
+@import '../App.scss';
+
+.login{
+    font-family: $font-main;
+    background: $main-color;
+    height: $height;
+    width: $width;
+
+    .top{
+        position: relative;
+        // background: $basic-color;
+        padding: 10rem 0 0 8rem;
+
+        h1{
+            font-size: $extra-text-size;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            color: $text-color;
+        }
+    }
+
+    .bottom{
+        width: $width;
+        height: calc(($height) * 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        img{
+            width: calc(($width) * 0.5);
+        }
+
+        form{
+            height: calc(($height) * 0.6);
+            width: calc(($width) * 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            // justify-content: space-between;
+            color: $text-color;
+
+            h1{
+                font-size: $extra-text-size;
+            }
+            p{
+                margin: 0.1rem 0;
+                font-size: $text-size;
+                font-weight: 500;
+            }
+
+            .group{
+                margin: 2rem 0;
+                width: $width;
+                font-size: $text-size;
+                position: relative;
+                
+                label{
+                    position: absolute;
+                    left: 1rem;
+                    top: 1rem;
+                    pointer-events: none;
+                    transition: all 0.3s;
+                    padding: 0.3rem;
+                }
+
+                input:focus + .placeholder{
+                    top: -0.8rem;
+                    font-size: $small-text;
+                    color: $accent-color;
+                    background-color: $main-color;
+                }
+
+                input{
+                    position: relative;
+                    outline: none;
+                    border: 0.03rem solid rgba(($accent-color), 0.4);
+                    resize: none;
+                    width: calc(($width) * 1);
+                    padding: 1rem;
+                    border-radius: $small-border-radius;
+                    color: rgba(($text-color), 0.6);
+                    font-size: $large-text-size;
+                    box-shadow: 0.03rem 0.03rem 0.03rem rgba(($text-color), 0.4),
+                                -0.03rem -0.03rem 0.03rem rgba(($text-color), 0.4);
+                    transition: all 0.2s;
+
+                    &:focus{
+                        outline: none;
+                        border: 0.03rem solid rgba(($button-color), 0.4);
+                    }
+                }
+
+                button{
+                    background: transparent;
+                    border: none;
+                    outline: none;
+                    color: $text-color;
+                    position: absolute;
+                    top: calc(($height) * 0.027);
+                    right: calc(($width) * 0.04);
+                }
+
+                a{
+                    color: $button-color;
+                    text-decoration: none;
+                    font-family: $font-main;
+                    margin: 1rem 0 0 0;
+                }
+            }
+
+            .log{
+                width: calc(($width) * 1);
+                text-align: center;
+                padding: 1.5rem 0;
+                background: $button-color;
+                color: $main-color;
+                outline: none;
+                border: none;
+                transition: all 0.2s;
+                border-radius: $small-border-radius;
+                margin: 7rem 0 0 0;
+
+                &:hover{
+                    background: $text-color;
+                }
+            }
+        }
+    }
+}

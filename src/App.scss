@@ -1,0 +1,36 @@
+@import url('https://fonts.cdnfonts.com/css/avenir-next-cyr');
+@import url('https://fonts.cdnfonts.com/css/work-sans');
+
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+$main-color: #FFFFFF;
+$basic-color: #000000;
+$bg-color: #E5E5E5;
+$button-color:#39CDCC;
+$accent-color: #545F7D;
+$red: #E4033B;
+$text-color: #213F7D;
+$text-size: 1.6rem;
+$large-text-size: 2.4rem;
+$extra-text-size: 4.2rem;
+$small-text: 1rem;
+$height: 100vh;
+$width: 100%;
+$box-height: 24rem;
+$box-width: 24rem;
+$radius: 50%;
+$border-radius: 2rem;
+$small-border-radius: 0.5rem;
+$font-main: 'Avenir Next Cyr', sans-serif;
+$font-sub: 'Work Sans', sans-serif;
