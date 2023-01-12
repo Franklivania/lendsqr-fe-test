@@ -1,0 +1,77 @@
+@import '../App.scss';
+
+.sidenav{
+    background: $main-color;
+    width: calc(($width) * 0.2);
+    // padding: 1rem;
+    font-family: $font-sub;
+    display: flex;
+    flex-direction: column;
+    font-size: $text-size;
+    transition: all 0.5s;
+    position: relative;
+
+    button{
+        background: transparent;
+        outline: none;
+        border: none;
+        color: $text-color;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding: 0.5rem;
+        font-size: $text-size;
+    }
+
+    .dash{
+        text-decoration: none;
+        width: $width;
+        color: rgba(($text-color), 1);
+        padding: 1.3rem;
+        
+        .active{
+            color: rgba(($text-color), 1);
+            background: rgba(($button-color), 0.3);
+            border-left: 0.3rem solid $text-color;
+        }
+        
+        &:hover{
+            color: rgba(($text-color), 1);
+            background: rgba(($button-color), 0.3);
+            border-left: 0.3rem solid $text-color;
+        }
+    }
+
+    nav{
+        display: flex;
+        flex-direction: column;
+        width: $width;
+
+        small{
+            color: $text-color;
+            padding: 1rem;
+        }
+
+        .link{
+            color: rgba(($text-color), 0.5);
+            margin: 0.3rem 0;
+            text-decoration: none;
+            width: $width;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+
+            .active{
+                color: rgba(($text-color), 1);
+                background: rgba(($button-color), 0.3);
+                border-left: 0.3rem solid $text-color;
+            }
+
+            &:hover{
+                color: rgba(($text-color), 1);
+                background: rgba(($button-color), 0.3);
+                border-left: 0.3rem solid $text-color;
+            }
+        }
+    }
+}
