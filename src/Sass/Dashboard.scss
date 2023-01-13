@@ -1,7 +1,45 @@
 @import '../App.scss';
 
 .dashboard{
+    position: relative;
     background: $bg-color;
     width: $width;
     // height: $height;
+    font-family: $font-sub;
+
+    .content{
+        position: relative;
+
+        .right{
+            position: absolute;
+            top: calc(($height) * 0.07);
+            left: calc(($width) * 0.3);
+
+            h1{
+                color: $text-color;
+                font-size: $large-text-size;
+                font-weight: 600;
+            }
+
+            .container{
+                position: relative;
+                width: calc(($width) * 4);
+                left: 0;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+                gap: 1rem;
+                padding: 1rem;
+                // background: $text-color;
+
+                .card{
+                    height: $box-height;
+                    width: $box-width;
+                    border-radius: $small-border-radius;
+                    background: $main-color;
+                    box-shadow: 0.03rem 0.03rem 0.4rem rgba(($accent-color), 0.3),
+                                -0.03rem -0.03rem 0.4rem rgba(($accent-color), 0.3);
+                }
+            }
+        }
+    }
 }

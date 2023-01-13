@@ -5,16 +5,31 @@ import '../Sass/Dashboard.scss'
 
 const Dashboard = () => {
 
-  const [open, setOpen] = useState(true)
+  // const [open, setOpen] = useState(true)
 
 
   return (
     <div className='dashboard'>
         <Topnav/>
-        <button onClick={() => setOpen(!open)} type='button'><i class="fa-solid fa-bars fa-2x"></i></button>
-        { open && (
-          <Sidenav/>
-        )}
+
+        <div className="content">
+          <div className="left">
+            <Sidenav/>
+          </div>
+
+          <div className="right">
+            <h1>Users</h1>
+
+            <div className="container">
+              <div className="card"></div>
+              <div className="card"></div>
+              <div className="card"></div>
+              <div className="card"></div>
+            </div>
+
+          </div>
+
+        </div>
     </div>
   )
 }

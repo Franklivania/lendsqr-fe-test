@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useCallback, useEffect } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom';
 import {toast, ToastContainer} from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import '../Sass/Login.scss'
@@ -11,6 +11,18 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   
   const navigate = useNavigate()
+  
+  const handleGoBack = useCallback(() => {
+    navigate(-1);
+  }, [navigate]);
+
+  useEffect(() => {
+    window.onpopstate = handleGoBack;
+    return () => {
+      window.onpopstate = null;
+    };
+  }, [handleGoBack]);
+  
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>){
     event.preventDefault()
