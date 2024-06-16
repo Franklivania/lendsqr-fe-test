@@ -1,0 +1,38 @@
+@import "../styles/index";
+
+*, *::before, *::after {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("../../public/font/AvenirNextLTPro-Regular.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir Next";
+  src: url("../../public/font/AvenirNextLTPro-Bold.otf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+html,
+body {
+  position: relative;
+  width: $width;
+  height: $height;
+  font-family: "Avenir Next";
+  overflow-x: hidden;
+
+  main {
+    position: relative;
+    width: $width;
+    padding: 2em;
+  }
+}
+

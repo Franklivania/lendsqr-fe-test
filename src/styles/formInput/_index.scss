@@ -1,0 +1,59 @@
+@use "../variables" as vars;
+@use "../colors" as color;
+
+.formCover {
+  position: relative;
+  width: vars.$width;
+  border: vars.$border;
+  border-radius: vars.$radius;
+  padding: 0.6em;
+  display: flex;
+  font-family: vars.$font;
+  
+  input{
+    position: relative;
+    width: vars.$width;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 0.3em 1em;
+    font-family: vars.$font;
+
+    &:focus-within ~ label {
+      transform: translateY(-2em);
+      color: color.$dark-blue;
+      background: color.$white;
+      padding: .3em .7em;
+    }
+  }
+
+  label{
+    position: absolute;
+    top: 30%;
+    left: 2%;
+    text-transform: capitalize;
+    color: color.$dark-blue-10;
+    font-size: small;
+    z-index: 10;
+    font-family: vars.$font;
+    transition: .3s ease-in-out;
+
+    &.activeLabel {
+      transform: translateY(-2em);
+      color: color.$dark-blue;
+      background: color.$white;
+      padding: .3em .7em;
+    }
+  }
+}
+
+.passwordDisplay{
+  position: absolute;
+  top: 30%;
+  right: 2%;
+  cursor: pointer;
+  font-size: small;
+  color: color.$cyan;
+  font-family: vars.$font;
+  font-weight: 600;
+}
