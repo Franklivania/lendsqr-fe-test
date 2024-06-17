@@ -29,6 +29,14 @@
   transition: background .3s ease-in-out, color .3s ease-in-out;
 }
 
+@mixin hoverTransition {
+  transition: transform .3s ease-in-out;
+
+  &:hover, &:focus, &:focus-visible, &:focus-within{
+    transform: scale(0.95);
+  }
+}
+
 @mixin activeSideNav {
   position: relative;
   background: $dark-blue-6;

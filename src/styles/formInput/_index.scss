@@ -4,11 +4,15 @@
 .formCover {
   position: relative;
   width: vars.$width;
-  border: vars.$border;
+  border: vars.$border-10;
   border-radius: vars.$radius;
   padding: 0.6em;
   display: flex;
   font-family: vars.$font;
+  
+  &:hover, &:focus, &:focus-visible, &:focus-within {
+    border: vars.$border;
+  }
   
   input{
     position: relative;

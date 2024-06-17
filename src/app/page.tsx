@@ -7,24 +7,29 @@ import signIn from "../../public/images/sign-in.svg";
 import Container from "@/layout/container";
 import Typography from "@/components/Typography";
 import { useRouter } from "next/navigation";
+import Button from "@/components/button";
 
 
 export default function Home() {
   const router = useRouter()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [formState, setFormState] = useState({
     email: "",
     password: ""
   })
-
+  
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
     setFormState({
       email: "",
       password: ""
     })
-
-    router.push('/dashboard')
-  }
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+      router.push('/dashboard');
+    }, 1000);
+  };
 
   return (
     <Container className="main" role="main">
@@ -56,7 +61,15 @@ export default function Home() {
           />
 
           <span className="forgot">FORGOT PASSWORD?</span>
+
+          <Button
+            type="submit"
+            title="SUBMIT"
+            variant="primary"
+            isLoading={isLoading}
+          />
         </span>
+
       </form>
     </Container>
   );

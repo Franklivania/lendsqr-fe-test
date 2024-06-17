@@ -1,7 +1,9 @@
 @use "colors" as c;
 
-$border: 2px solid c.$dark-blue-10;
+$border: 2px solid c.$dark-blue;
+$border-10: 2px solid c.$dark-blue-10;
 $cyan-border: 2px solid c.$cyan;
+$red-border: 2px solid c.$red;
 $very-light-border: 0.02px solid c.$dark-blue-6;
 $light-border: 1px solid c.$dark-blue-6;
 $small-radius: 5px;

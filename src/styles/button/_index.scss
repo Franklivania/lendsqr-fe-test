@@ -1,0 +1,61 @@
+@use "../variables" as vars;
+@use "../colors" as c;
+@use "../mixins" as mixins;
+
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  resize: none;
+  width: vars.$width;
+  padding: 0.8em 0;
+  border-radius: vars.$radius;
+  font-family: vars.$font;
+  font-size: 0.875em;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  cursor: pointer;
+
+  &.primary {
+    border: vars.$cyan-border;
+    background: c.$cyan;
+    color: c.$white;
+    @include mixins.bgTransition();
+    @include mixins.hoverTransition();
+
+    &:hover,
+    &:focus {
+      background: c.$white;
+      color: c.$cyan;
+    }
+  }
+
+  &.secondary {
+    background: c.$white;
+    border: vars.$cyan-border;
+    color: c.$cyan;
+    @include mixins.hoverTransition();
+  }
+
+  &.red {
+    background: c.$white;
+    border: vars.$red-border;
+    color: c.$red;
+    @include mixins.hoverTransition();
+  }
+
+  &.blue {
+    background: c.$white;
+    border: vars.$border;
+    color: c.$dark-blue;
+    @include mixins.hoverTransition();
+  }
+
+  &.loading, &.disabled {
+    background: rgba(c.$blue, 0.5);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
