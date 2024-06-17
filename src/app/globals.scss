@@ -1,6 +1,8 @@
 @import "../styles/index";
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   padding: 0;
   margin: 0;
   -webkit-box-sizing: border-box;
@@ -29,10 +31,64 @@ body {
   font-family: "Avenir Next";
   overflow-x: hidden;
 
-  main {
+  .main {
     position: relative;
     width: $width;
     padding: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    aside {
+      display: none;
+      flex-direction: column;
+      align-items: start;
+      justify-content: center;
+      gap: 8.688em;
+
+      .image{
+        width: 100%;
+      }
+
+      @media (min-width: 1020px) {
+        display: flex;
+        width: calc($width/1.6);
+      }
+
+      @media (min-width: 1100px) {
+        width: $width;
+      }
+    }
+
+    form {
+      width: $width;
+      display: flex;
+      flex-direction: column;
+      gap: 3.75em;
+      padding: 0 0.3em;
+
+      @media (min-width: 768px) {
+        padding: 0 6.25em;
+      }
+
+      section{
+        display: flex;
+        flex-direction: column;
+        gap: 0.625em;
+      }
+
+      span {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5em;
+
+        .forgot {
+          color: $cyan;
+          font-weight: 600;
+          font-size: 0.75em;
+          letter-spacing: 0.2em;
+        }
+      }
+    }
   }
 }
-

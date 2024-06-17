@@ -1,0 +1,45 @@
+@use "../variables" as vars;
+@use "../colors" as c;
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.headings {
+  font-family: vars.$font;
+  color: c.$dark-blue;
+  font-family: vars.$font;
+
+}
+.h1{
+  font-size: 2em;
+  
+  @media (min-width: 768px) {
+    font-size: 2.5em;
+  }
+}
+
+.h5{
+  font-weight: lighter;
+  font-size: 1.25em;
+  color: c.$blue !important;
+}
+
+.paragraph {
+  font-family: vars.$font;
+  color: c.$blue;
+  font-family: vars.$font;
+  font-size: 1em;
+  
+  .light{
+    color: rgba(c.$blue, 0.6);
+  }
+}

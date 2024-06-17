@@ -1,0 +1,10 @@
+@use "../../styles/variables" as var;
+
+.container {
+  position: relative;
+  max-width: 90em;
+  height: var.$height;
+  margin: 0 auto;
+  overflow-x: hidden;
+  padding: 0 2%;
+}
