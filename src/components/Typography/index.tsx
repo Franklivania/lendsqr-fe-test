@@ -13,45 +13,45 @@ export type ParagraphTypes = {
 
 const h1 = ({ children, className, ...props }: TypographyTypes) => {
   return (
-    <div>
+    <>
       <h1 className="srOnly">{children}</h1>
       <h1 className={`headings h1 ${className}`} {...props}>
         {children}
       </h1>
-    </div>
+    </>
   )
 }
 
 const h2 = ({ children, className, ...props }: TypographyTypes) => {
   return (
-    <div>
+    <>
       <h2 className="srOnly">{children}</h2>
       <h2 className={`headings ${className}`} {...props}>
         {children}
       </h2>
-    </div>
+    </>
   )
 }
 
 const h3 = ({ children, className, ...props }: TypographyTypes) => {
   return (
-    <div>
+    <>
       <h3 className="srOnly">{children}</h3>
       <h3 className={`headings ${className}`} {...props}>
         {children}
       </h3>
-    </div>
+    </>
   )
 }
 
 const h4 = ({ children, className, ...props }: TypographyTypes) => {
   return (
-    <div>
+    <>
       <h4 className="srOnly">{children}</h4>
       <h4 className={`headings ${className}`} {...props}>
         {children}
       </h4>
-    </div>
+    </>
   )
 }
 
@@ -68,19 +68,19 @@ const h5 = ({ children, className, ...props }: TypographyTypes) => {
 
 const p = ({ children, className, isLight, ...props }: ParagraphTypes) => {
   return isLight ? (
-    <div>
+    <>
       <p className="srOnly">{children}</p>
       <p className={`paragraph light ${className}`} {...props}>
         {children}
       </p>
-    </div>
+    </>
   ) : (
-    <div>
+    <>
       <p className="srOnly">{children}</p>
       <p className={`paragraph ${className}`} {...props}>
         {children}
       </p>
-    </div>
+    </>
   )
 }
 

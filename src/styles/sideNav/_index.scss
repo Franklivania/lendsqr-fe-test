@@ -1,0 +1,83 @@
+@use "../variables" as vars;
+@use "../colors" as c;
+
+.side-nav {
+  position: relative;
+  width: vars.$width;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 1em 0;
+  overflow-x: hidden;
+  box-shadow:  0.625em 0 0.938em -0.188em rgb(gray, 0.1), 0.25em 0 0.375em -0.25em rgba(gray, 0.048);
+
+  #switch-org {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    margin: 0 auto;
+  }
+  
+  #dash {
+    position: relative;
+    display: flex;
+    align-items: center;
+    // gap: 0.2em;
+    padding: 0.625em 0 0.625em 1.3em;
+    
+    p{
+      color: rgba(c.$dark-blue, 0.6);
+      font-size: 1.188em;
+      margin-left: -1.5em;
+      font-weight: 400;
+    }
+  }
+
+  .navigation {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    
+    .link, .list {
+      padding: 0.625em 0 0.625em 1.875em;
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.625em;
+      text-decoration: none;
+      color: rgba(c.$dark-blue, 0.6);
+
+      &:hover, &:focus, &:focus-visible, &:focus-within {
+        position: relative;
+        background: c.$cyan-15;
+      }
+      
+      &.active {
+        position: relative;
+        width: vars.$width;
+        height: 100%;
+        background: c.$cyan-15;
+        color: c.$dark-blue;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0.2em;
+          height: 100%;
+          background: c.$cyan;
+        }
+      }
+    }
+  }
+
+  .nav-head {
+    font-size: 0.875em;
+    // letter-spacing: 0.2em;
+    padding: 0.625em 1.875em;
+    font-weight: 500;
+  }
+}

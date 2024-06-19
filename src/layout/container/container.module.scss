@@ -1,9 +1,9 @@
-@use "../../styles/variables" as var;
+@use "../../styles/variables" as vars;
 
 .container {
   position: relative;
   max-width: 90em;
-  height: var.$height;
+  height: vars.$height;
   margin: 0 auto;
   overflow-x: hidden;
   padding: 0 2%;

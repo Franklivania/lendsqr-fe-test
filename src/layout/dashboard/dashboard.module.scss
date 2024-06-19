@@ -1,0 +1,29 @@
+@use "../../styles/variables" as vars;
+@use "../../styles/colors" as c;
+
+.dashboard {
+  position: relative;
+  max-width: 100em;
+  min-width: 80em;
+  height: vars.$height;
+  overflow: hidden;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  section {
+    position: relative;
+    display: flex;
+    width: vars.$width;
+    height: 100%;
+    overflow: hidden;
+    
+    .container{
+      position: relative;
+      background: c.$lt-white;
+      width: vars.$width;
+      height: 100%;
+      overflow-x: hidden;
+      padding: 3.75em;
+    }
+  }
+}

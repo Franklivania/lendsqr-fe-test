@@ -1,0 +1,49 @@
+@use "../variables" as vars;
+@use "../colors" as c;
+
+.searchbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 25em;
+  // min-width: 3.5em;
+  border: vars.$border-10;
+  border-radius: vars.$radius;
+  overflow: hidden;
+  margin: 0 auto;
+
+  &:hover, &:focus, &:focus-visible, &:focus-within {
+    border: vars.$cyan-border;
+  }
+
+  // @media (max-width: 768px) {
+  //   border-radius: 50%;
+  // }
+
+  input {
+    position: relative;
+    display: flex;
+    width: vars.$width;
+    border: none;
+    outline: none;
+    resize: none;
+    padding: 0.3em 1em;
+    font-family: vars.$font;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  label {
+    padding: 0.6em 1.3em;
+    background: c.$cyan;
+    color: c.$white;
+
+    @media (max-width: 768px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

@@ -30,6 +30,9 @@ body {
   height: $height;
   font-family: "Avenir Next";
   overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: $dark-blue $dark-blue-10;
+  scroll-behavior: smooth;
 
   .main {
     position: relative;
@@ -91,4 +94,22 @@ body {
       }
     }
   }
+}
+
+::-webkit-scrollbar {
+  width: 0.15em;
+  transition: width 0.2s ease-in-out;
+  
+  &:hover, &:focus-within {
+    width: 0.2em;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background: $lt-white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $dark-blue-10;
+  border-radius: 2em;
 }

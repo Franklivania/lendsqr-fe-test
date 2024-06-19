@@ -1,0 +1,58 @@
+@use "../variables" as vars;
+@use "../colors" as c;
+
+.top-nav {
+  position: relative;
+  width: vars.$width;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.8em;
+  box-shadow: 0 0.625em 0.938em -0.188em rgb(gray, 0.1), 0 0.25em 0.375em -0.25em rgba(gray, 0.048);
+
+  #image-view {
+    position: relative;
+    width: max-content;
+
+    .logo {
+      display: flex;
+    }
+    .icon {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .logo {
+        display: none;
+      }
+      .icon {
+        display: flex;
+      }
+    }
+  }
+
+  .profile {
+    width: max-content;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin: 0 0 0 auto;
+
+    #typo{
+      text-decoration: underline;
+      font-weight: 700;
+    }
+
+    aside {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.2em;
+
+      .image {
+        margin: 0 0.5em 0 0;
+      }
+    }
+  }
+}
