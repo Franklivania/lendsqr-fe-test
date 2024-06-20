@@ -30,9 +30,7 @@ body {
   height: $height;
   font-family: "Avenir Next";
   overflow-x: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: $dark-blue $dark-blue-10;
-  scroll-behavior: smooth;
+  @include scrollbarConfig();
 
   .main {
     position: relative;
@@ -90,26 +88,9 @@ body {
           font-weight: 600;
           font-size: 0.75em;
           letter-spacing: 0.2em;
+          font-family: $font;
         }
       }
     }
   }
-}
-
-::-webkit-scrollbar {
-  width: 0.15em;
-  transition: width 0.2s ease-in-out;
-  
-  &:hover, &:focus-within {
-    width: 0.2em;
-  }
-}
-
-::-webkit-scrollbar-track {
-  background: $lt-white;
-}
-
-::-webkit-scrollbar-thumb {
-  background: $dark-blue-10;
-  border-radius: 2em;
 }

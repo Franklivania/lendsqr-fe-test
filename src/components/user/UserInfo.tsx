@@ -9,7 +9,7 @@ export default function UserInfo() {
       {generalInfo.map((item, idx) => (
         <div key={idx} className={`user-info-container`}>
           <span className={`user-icon-container ${item.color}`}>
-            <Image src={item.icon} width={0} height={0} alt={item.title} />
+            <Image src={item.icon} width={24} height={24} alt={item.title} />
           </span>
           <Typography.p>{item.title}</Typography.p>
           <Typography.h2>{item.count}</Typography.h2>

@@ -1,0 +1,70 @@
+@use "../variables" as vars;
+@use "../colors" as c;
+
+#user-info-display {
+  max-width: 80em;
+  width: vars.$width;
+  height: max-content;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 1200px) {
+    gap: 1.875em;
+  }
+
+  .user-info-container {
+    max-width: 15em;
+    min-width: 13em;
+    padding: 1.25em 1.875em 1.875em 1.875em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.813em;
+    background: c.$white;
+    border: vars.$very-light-border;
+    border-radius: vars.$small-radius;
+    box-shadow: vars.$shadow-sm;
+    overflow: auto;
+
+    @media (max-width: 1200px) {
+      min-width: 15em;
+      width: 15em;
+    }
+
+    p,
+    h2 {
+      font-family: vars.$font-sub !important;
+    }
+
+    p {
+      color: c.$blue !important;
+      font-size: vars.$text-14 !important;
+    }
+
+    .user-icon-container {
+      width: max-content;
+      padding: 0.563em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100%;
+
+      &.pink {
+        background: c.$pink-15;
+      }
+
+      &.purple {
+        background: c.$purple-15;
+      }
+
+      &.blue {
+        background: c.$blue-15;
+      }
+
+      &.vivid {
+        background: c.$vivid-15;
+      }
+    }
+  }
+}

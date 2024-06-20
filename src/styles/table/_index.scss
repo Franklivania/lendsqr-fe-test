@@ -1,0 +1,75 @@
+@use "../mixins" as mixins;
+@use "../variables" as vars;
+@use "../colors" as c;
+
+#table-container {
+  position: relative;
+  border: vars.$very-light-border;
+  height: 40em;
+  overflow: auto;
+  border-radius: vars.$radius;
+  padding: 1em 1.875em;
+  background: c.$white;
+
+  .table {
+    position: relative;
+    min-width: 64.813em;
+    width: vars.$width;
+    height: 100%;
+    overflow-x: hidden;
+    table-layout: auto;
+    border-collapse: collapse;
+
+    #t-head {
+      position: sticky;
+
+      tr {
+        position: relative;
+
+        .th {
+          padding: 1.6em 0.4em;
+
+          .th-header {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            gap: 0.5em;
+            font-family: vars.$font-sub;
+            text-align: left;
+            font-size: vars.$text-12;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: c.$dark-blue;
+            cursor: pointer;
+            @include mixins.hoverTransition();
+          }
+        }
+      }
+    }
+
+    #t-body {
+      width: vars.$width;
+      height: 100%;
+      margin: 0 auto;
+
+      .tr-body {
+        cursor: pointer;
+        text-align: center;
+        color: c.$blue;
+        font-size: vars.$text-14;
+
+        .td-body {
+          border-bottom: vars.$border-10;
+          text-align: left;
+        }
+
+        &:hover,
+        &:focus,
+        &:focus-visible,
+        &:focus-within {
+          background: c.$dark-blue-6;
+        }
+      }
+    }
+  }
+}

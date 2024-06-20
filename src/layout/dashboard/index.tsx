@@ -15,9 +15,9 @@ export default function DashboardContainer({children, ...props}:DashboardTypes) 
   return (
     <div className={styles.dashboard} {...props}>
       <TopNav />
-      <section>
+      <section className={styles.dashboardContent}>
         <SideNav style={{flex: 1}} />
-        <div style={{flex: 4}} className={`${styles.container} ${work.className}`}>{children}</div>
+        <div className={`${styles.container} ${work.className}`}>{children}</div>
       </section>
     </div>
   )

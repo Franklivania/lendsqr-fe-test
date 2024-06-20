@@ -1,0 +1,57 @@
+@use "../variables" as vars;
+@use "../colors" as c;
+
+#custom-select-container {
+  position: relative;
+  width: vars.$width;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  label {
+    font-family: vars.$font-sub;
+    font-size: vars.$text-14;
+    color: c.$blue;
+    font-weight: 500;
+  }
+
+  #select {
+    position: relative;
+    width: vars.$width;
+    padding: 0.75em 1.25em;
+    border: vars.$border-10;
+    border-radius: vars.$radius;
+    outline: none;
+    resize: none;
+    stroke: none;
+    background: c.$white;
+    color: c.$blue;
+    font-family: vars.$font-sub;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1.5em' height='1.5em' viewBox='0 0 512 512'%3E%3Cpath fill='none' stroke='%23213F7DA6' stroke-linecap='round' stroke-linejoin='round' stroke-width='56' d='m112 184l144 144l144-144'/%3E%3C/svg%3E") no-repeat 98%;
+
+    &:hover, &:focus, &:focus-visible, &:focus-within {
+      border: vars.$border;
+    }
+
+    #placeholder {
+      color: c.$blue-15;
+      font-family: vars.$font-sub;
+      font-size: vars.$text-14;
+    }
+    
+    .option {
+      color: c.$blue;
+      font-family: vars.$font-sub;
+      font-size: vars.$text-14;
+    }
+
+    .icon {
+      position: absolute;
+      top: 25%;
+      right: 5%;
+    }
+  }
+}

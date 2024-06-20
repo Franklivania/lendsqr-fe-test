@@ -1,0 +1,18 @@
+@use "../variables" as vars;
+@use "../colors" as c;
+
+@forward "./userInfo";
+
+
+#users-display {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  font-family: vars.$font-sub !important;
+  
+  #H2{
+    font-family: vars.$font-sub !important;
+    font-weight: 500;
+  }
+}

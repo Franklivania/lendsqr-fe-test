@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 const work = Work_Sans({ subsets: ["latin"] })
 
 export default function SideNav({ ...props }) {
-  
+
   const path = usePathname()
   const isActive = (link: string) => {
     return path === `/dashboard/${link}`;
@@ -33,33 +33,29 @@ export default function SideNav({ ...props }) {
       <div role="navigation" className="navigation">
         <Typography.p className={`nav-head ${work.className}`}>CUSTOMERS</Typography.p>
         {sideItems.dashboard.map((item, idx) => (
-          <Link key={idx} href={`/dashboard/${item.link}`} className={`link ${isActive(item.link) ? "active" : "link"} ${work.className}`}>
+          <Link key={idx} href={`/dashboard/${item.link}`} title={item.title} aria-label={item.title} aria-labelledby={item.title} className={`link ${isActive(item.link) ? "active" : "link"} ${work.className}`}>
             <Image src={item.icon} width={0} height={0} alt={item.title} />
             {item.title}
           </Link>
         ))}
       </div>
 
-      <ul role="navigation" className="navigation">
+      <ul role="list" className="navigation">
         <Typography.p className={`nav-head ${work.className}`}>BUSINESSES</Typography.p>
         {sideItems.businesses.map((item, idx) => (
-          <li key={idx} className={work.className}>
-            <span className="list">
-              <Image src={item.icon} width={0} height={0} alt={item.title} />
-              {item.title}
-            </span>
+          <li key={idx} className={`list ${work.className}`} title={item.title} aria-label={item.title} aria-labelledby={item.title}>
+            <Image src={item.icon} width={0} height={0} alt={item.title} />
+            {item.title}
           </li>
         ))}
       </ul>
 
-      <ul role="navigation" className="navigation">
+      <ul role="list" className="navigation">
         <Typography.p className={`nav-head ${work.className}`}>SETTINGS</Typography.p>
         {sideItems.settings.map((item, idx) => (
-          <li key={idx} className={work.className}>
-            <span className="list">
-              <Image src={item.icon} width={0} height={0} alt={item.title} />
-              {item.title}
-            </span>
+          <li key={idx} className={`list ${work.className}`} title={item.title} aria-label={item.title} aria-labelledby={item.title}>
+            <Image src={item.icon} width={0} height={0} alt={item.title} />
+            {item.title}
           </li>
         ))}
       </ul>

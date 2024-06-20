@@ -1,4 +1,4 @@
-import { title } from "process";
+import { Icon } from "@iconify/react";
 
 export type TableColumns<T> = {
   title?: string,
@@ -11,19 +11,22 @@ export type TableProps<T = any> = {
   data: T[];
 }
 
-export default function Table({columns, data}:TableProps) {
-  const colHeaders = columns.map(({title, key}) => (
+export default function Table({ columns, data }: TableProps) {
+  const colHeaders = columns.map(({ title, key }) => (
     <th key={key} className="th">
-      <span className="th-header">{title}</span>
+      <span className="th-header">
+        {title}
+        <Icon icon={"bx:filter"} width={20} color="#545F7D" />
+      </span>
     </th>
   ))
 
   const tableData = data.map((data, i) => {
     return (
-      <tr key={`column${i}`} className="tr">
+      <tr key={`column${i}`} className="tr-body">
         {columns.map(({ render }, id) => (
-          <td key={`data${i}${id}`}>
-            {render (data, i)}
+          <td key={`data${i}${id}`} className="td-body">
+            {render(data, i)}
           </td>
         ))}
       </tr>
@@ -32,8 +35,8 @@ export default function Table({columns, data}:TableProps) {
 
   return (
     <section id="table-container">
-      <table className="table">
-        <thead id="t-head">
+      <table className="table" aria-label="Table Data">
+        <thead id="t-head" aria-label="Table header">
           <tr>{colHeaders}</tr>
         </thead>
         <tbody id="t-body">{tableData}</tbody>

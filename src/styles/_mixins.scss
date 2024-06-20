@@ -1,29 +1,4 @@
-@mixin flexContainerCenter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-// @mixin flexCol {
-//   display: flex;
-//   flex-direction: column;
-// }
-
-@mixin flexContainerStart {
-  display: flex;
-  align-items: start;
-}
-
-@mixin buttonFilled {
-  background: $cyan;
-  color: $white;
-  border: 1px solid $cyan
-}
-
-@mixin buttonFilledHover {
-  background: $white;
-  color: $cyan;
-}
+@use "colors" as c;
 
 @mixin bgTransition {
   transition: background .3s ease-in-out, color .3s ease-in-out;
@@ -37,15 +12,31 @@
   }
 }
 
-@mixin activeSideNav {
-  position: relative;
-  background: $dark-blue-6;
-  &::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 5px;
-    height: 100%;
+@mixin scrollbarConfig {
+  scroll-behavior: smooth;
+  
+  @-moz-document url-prefix() {
+    scrollbar-width: thin;
+    scrollbar-color: c.$dark-blue c.$dark-blue-10;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.3em;
+    height: 0.5em;
+    cursor: grabbing;
+    transition: width 0.2s ease-in-out;
     
+    &:hover, &:focus, &:focus-visible, &:focus-within {
+      width: 0.2em;
+    }
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: c.$dark-blue-10;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: c.$dark-blue;
+    border-radius: 2em;
   }
 }

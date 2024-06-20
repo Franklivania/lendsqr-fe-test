@@ -11,7 +11,7 @@ const work = Work_Sans({ subsets: ["latin"] })
 
 export default function TopNav({ ...props }) {
   return (
-    <div role="menubar" className="top-nav" {...props}>
+    <div role="menubar" id="top-nav" {...props}>
       <div id="image-view">
         <Image src={logo} className="logo" width={0} height={0} alt="Lendsqr" title="Lendsqr" />
         <Image src={icon} className="icon" width={0} height={0} alt="Lendsqr" title="Lendsqr" />

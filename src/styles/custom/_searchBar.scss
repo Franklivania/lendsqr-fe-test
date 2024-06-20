@@ -10,7 +10,7 @@
   border-radius: vars.$radius;
   overflow: hidden;
   margin: 0 auto;
-  font-size: 0.875em;
+  font-size: vars.$text-14;
 
   &:hover, &:focus, &:focus-visible, &:focus-within {
     border: vars.$cyan-border;
