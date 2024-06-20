@@ -5,20 +5,20 @@
   position: relative;
   display: flex;
   align-items: center;
-  max-width: 25em;
-  // min-width: 3.5em;
+  width: 25em;
   border: vars.$border-10;
   border-radius: vars.$radius;
   overflow: hidden;
   margin: 0 auto;
+  font-size: 0.875em;
 
   &:hover, &:focus, &:focus-visible, &:focus-within {
     border: vars.$cyan-border;
   }
 
-  // @media (max-width: 768px) {
-  //   border-radius: 50%;
-  // }
+  @media (max-width: 768px) {
+    width: max-content;
+  }
 
   input {
     position: relative;
@@ -28,7 +28,7 @@
     outline: none;
     resize: none;
     padding: 0.3em 1em;
-    font-family: vars.$font;
+    font-family: vars.$font-sub;
 
     @media (max-width: 768px) {
       display: none;

@@ -40,7 +40,7 @@ export default function SideNav({ ...props }) {
         ))}
       </div>
 
-      <div role="navigation" className="navigation">
+      <ul role="navigation" className="navigation">
         <Typography.p className={`nav-head ${work.className}`}>BUSINESSES</Typography.p>
         {sideItems.businesses.map((item, idx) => (
           <li key={idx} className={work.className}>
@@ -50,9 +50,9 @@ export default function SideNav({ ...props }) {
             </span>
           </li>
         ))}
-      </div>
+      </ul>
 
-      <div role="navigation" className="navigation">
+      <ul role="navigation" className="navigation">
         <Typography.p className={`nav-head ${work.className}`}>SETTINGS</Typography.p>
         {sideItems.settings.map((item, idx) => (
           <li key={idx} className={work.className}>
@@ -62,7 +62,7 @@ export default function SideNav({ ...props }) {
             </span>
           </li>
         ))}
-      </div>
+      </ul>
     </menu>
   )
 }
