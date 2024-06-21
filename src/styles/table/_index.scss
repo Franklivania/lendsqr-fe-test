@@ -53,14 +53,17 @@
       margin: 0 auto;
 
       .tr-body {
+        position: relative;
         cursor: pointer;
         text-align: center;
         color: c.$blue;
         font-size: vars.$text-14;
 
         .td-body {
+          position: relative;
           border-bottom: vars.$border-10;
           text-align: left;
+          padding: 1.257em 0;
         }
 
         &:hover,
