@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.scss";
+import QueryProvider from "@/provider/QueryClientProvider";
 
 export const metadata: Metadata = {
   title: "Lendsqr Frontend Assessment",
   description: "An application written for the lendsqr frontend assessment",
 };
+
 
 export default function RootLayout({
   children,
@@ -13,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <QueryProvider>
+        <body>{children}</body>
+      </QueryProvider>
     </html>
   );
 }

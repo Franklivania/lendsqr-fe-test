@@ -1,6 +1,5 @@
 import Typography from "@/components/Typography";
-import CustomInput from "@/components/custom/CustomInput";
-import CustomSelect, { DropdownOption } from "@/components/custom/CustomSelect";
+import { DropdownOption } from "@/components/custom/CustomSelect";
 import UserInfo from "@/components/user/UserInfo";
 import UserTable from "@/components/user/UserTable";
 import DashboardContainer from "@/layout/dashboard";
@@ -25,19 +24,6 @@ export default function Users() {
     <DashboardContainer>
       <div id="users-display">
         <Typography.h2 id="H2">Users</Typography.h2>
-        <CustomSelect 
-          label="Onboarding"
-          options={label1}
-          placeholder="Say something"
-          value={""}
-        />
-
-        <CustomInput 
-          type="date"
-          id=""
-          title="Hello"
-          value=""
-        />
         <UserInfo />
         <UserTable />
       </div>

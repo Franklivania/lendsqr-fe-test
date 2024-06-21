@@ -1,56 +1,55 @@
+"use client"
+import { useAxiosData } from '@/api/axiosQuery';
 import Table from "../table";
-
-type UserData = {
-  id: number;
-  name: string;
-  age: number;
-  email: string;
-  city: string; 
-  phone: string;
-};
+import { User } from '@/types';
 
 const columns = [
   {
-    title: 'Name',
-    key: 'name',
-    render: (data: UserData) => <span>{data.name}</span>,
+    title: 'Organization',
+    key: 'organization',
+    render: (data: User) => <span>{data.activities.organization}</span>,
   },
   {
-    title: 'Age',
-    key: 'age',
-    render: (data: UserData) => <span>{data.age}</span>,
+    title: 'Username',
+    key: 'username',
+    render: (data: User) => <span>{data.fullName}</span>,
   },
   {
     title: 'Email',
     key: 'email',
-    render: (data: UserData) => <span>{data.email}</span>,
+    render: (data: User) => <span>{data.personalInfo.emailAddress}</span>,
   },
   {
-    title: 'City',
-    key: 'city',
-    render: (data: UserData) => <span>{data.city}</span>,
+    title: 'Phone Number',
+    key: 'phoneNumber',
+    render: (data: User) => <span>{data.personalInfo.phoneNumber}</span>,
   },
   {
-    title: 'Phone',
-    key: 'phone',
-    render: (data: UserData) => <span>{data.phone}</span>,
+    title: 'Date Joined',
+    key: 'dateJoined',
+    render: (data: User) => <span>{data.activities.dateJoined}</span>,
+  },
+  {
+    title: 'Status',
+    key: 'status',
+    render: (data: User) => <span className={`status ${data.activities.status.toLowerCase()}`}>{data.activities.status}</span>,
   },
 ];
 
-// Generating 20 rows of data
-const data: UserData[] = Array.from({ length: 10 }, (_, index) => ({
-  id: index + 1,
-  name: `User ${index + 1}`,
-  age: 20 + (index % 10),
-  email: `user${index + 1}@example.com`,
-  city: `City ${index % 5}`,
-  phone: `123-456-789${index % 10}`,
-}));
+const UserTable = () => {
+  const baseUrl = `${process.env.NEXT_PUBLIC_URL}`
+  const { data, error, isLoading } = useAxiosData<User[]>(baseUrl);
 
-export default function UserTable() {
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  const tableData = data || [];
+
   return (
     <div>
-      <Table columns={columns} data={data} />
+      <Table columns={columns} data={tableData} />
     </div>
-  )
-}
+  );
+};
+
+export default UserTable;

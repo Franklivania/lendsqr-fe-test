@@ -1,4 +1,4 @@
-export interface PersonalInfo {
+export type PersonalInfo = {
   phoneNumber: string;
   emailAddress: string;
   bvn: string;
@@ -8,7 +8,7 @@ export interface PersonalInfo {
   typeOfResidence: string;
 }
 
-export interface Employment {
+export type Employment = {
   levelOfEducation: string;
   employmentStatus: string;
   sectorOfEmployment: string;
@@ -18,27 +18,27 @@ export interface Employment {
   loanRepayment: string;
 }
 
-export interface Socials {
+export type Socials = {
   twitter: string;
   facebook: string;
   instagram: string;
 }
 
-export interface Guarantor {
+export type Guarantor = {
   fullName: string;
   phoneNumber: string;
   emailAddress: string;
   relationship: string;
 }
 
-export interface Activities {
+export type Activities = {
   organization: string;
   email: string;
   dateJoined: string;
   status: "Active" | "Inactive" | "Pending" | "Blacklisted";
 }
 
-export interface User {
+export type User = {
   fullName: string;
   userTier: "1" | "2" | "3";
   userId: string;
