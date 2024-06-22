@@ -1,0 +1,28 @@
+@use "../mixins" as mixins;
+@use "../variables" as vars;
+@use "../colors" as c;
+
+#table-head-sort-container {
+  position: absolute;
+  top: 30%;
+  left: 0;
+  background: c.$white;
+  border: vars.$border-10;
+  padding: 1.875em 1.25em;
+  border-radius: vars.$small-radius;
+  z-index: 10;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.257em;
+    
+    #form-actions {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.257em;
+    }
+  }
+}

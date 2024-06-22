@@ -2,6 +2,9 @@
 @use "../variables" as vars;
 @use "../colors" as c;
 
+@forward "tableItemActions";
+@forward "tableHeadSort";
+
 #table-container {
   position: relative;
   border: vars.$very-light-border;
@@ -30,6 +33,7 @@
           padding: 1.6em 0.4em;
 
           .th-header {
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: start;
@@ -48,6 +52,7 @@
     }
 
     #t-body {
+      position: relative;
       width: vars.$width;
       height: 100%;
       margin: 0 auto;

@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "react";
+import { ChangeEvent, HTMLAttributes } from "react";
 
 export type DropdownOption = {
   value: string;
@@ -8,7 +8,7 @@ export type DropdownOption = {
 type DropdownProps = {
   options: DropdownOption[];
   value: string;
-  placeholder: "Select" | string;
+  placeholder?: "Select" | string;
   label: string;
 } & HTMLAttributes<HTMLSelectElement>;
 
@@ -22,7 +22,7 @@ export default function CustomSelect({
   return (
     <div id="custom-select-container">
       <label htmlFor="select">{label}</label>
-      <select name="select" id="select" value={value}>
+      <select name="select" id="select" value={value} onChange={(e: ChangeEvent<HTMLSelectElement>) => props.onChange && props.onChange(e)}>
         <option value="" id="placeholder">{placeholder}</option>
         {options.map((option) => (
           <option key={option.value} value={option.value} className="option">

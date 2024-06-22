@@ -1,50 +1,36 @@
 "use client";
 
-import { useState, useEffect, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useAxiosData } from '@/api/axiosQuery';
 import Table from "../table";
 import { User } from '@/types';
 import Typography from '../Typography';
 import { Icon } from '@iconify/react';
+import TableHeadSort from '../table/TableHeadSort';
+
+type SortConfig = {
+  key: keyof User | '';
+  direction: 'ascending' | 'descending';
+};
 
 const columns = [
-  {
-    title: 'Organization',
-    key: 'organization',
-    render: (data: User) => <span>{data.activities.organization}</span>,
-  },
-  {
-    title: 'Username',
-    key: 'username',
-    render: (data: User) => <span>{data.fullName}</span>,
-  },
-  {
-    title: 'Email',
-    key: 'email',
-    render: (data: User) => <span>{data.personalInfo.emailAddress}</span>,
-  },
-  {
-    title: 'Phone Number',
-    key: 'phoneNumber',
-    render: (data: User) => <span>{data.personalInfo.phoneNumber}</span>,
-  },
-  {
-    title: 'Date Joined',
-    key: 'dateJoined',
-    render: (data: User) => <span>{data.activities.dateJoined}</span>,
-  },
-  {
-    title: 'Status',
-    key: 'status',
-    render: (data: User) => <span className={`status ${data.activities.status.toLowerCase()}`}>{data.activities.status}</span>,
-  }
+  { title: 'Organization', key: 'organization', render: (data: User) => <span>{data.activities.organization}</span> },
+  { title: 'Username', key: 'username', render: (data: User) => <span>{data.fullName}</span> },
+  { title: 'Email', key: 'email', render: (data: User) => <span>{data.personalInfo.emailAddress}</span> },
+  { title: 'Phone Number', key: 'phoneNumber', render: (data: User) => <span>{data.personalInfo.phoneNumber}</span> },
+  { title: 'Date Joined', key: 'dateJoined', render: (data: User) => <span>{data.activities.dateJoined}</span> },
+  { title: 'Status', key: 'status', render: (data: User) => <span className={`status ${data.activities.status.toLowerCase()}`}>{data.activities.status}</span> },
+  { title: '', key: 'actions', render: (data: User) => <span><Icon icon={"mage:dots"} width={24} color='#545F7D' /></span> },
 ];
 
 const UserTable = () => {
   const defaultItemsPerPage = 100;
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [itemsPerPage, setItemsPerPage] = useState<number>(defaultItemsPerPage);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(defaultItemsPerPage);
+  const [sortConfig, setSortConfig] = useState<SortConfig>({ key: '', direction: 'ascending' });
+  const [isSortOpen, setIsSortOpen] = useState<boolean>(false);
+  const sortContainerRef = useRef<HTMLDivElement | null>(null);
 
   const baseUrl = `${process.env.NEXT_PUBLIC_URL}`;
   const { data, error, isLoading } = useAxiosData<User[]>(baseUrl);
@@ -55,48 +41,50 @@ const UserTable = () => {
   const itemsParam = searchParams.get('itemsPerPage');
 
   useEffect(() => {
-    const page = pageParam ? parseInt(pageParam, 10) : 1;
-    const items = itemsParam ? parseInt(itemsParam, 10) : defaultItemsPerPage;
-
-    setCurrentPage(page);
-    setItemsPerPage(items);
+    setCurrentPage(pageParam ? parseInt(pageParam, 10) : 1);
+    setItemsPerPage(itemsParam ? parseInt(itemsParam, 10) : defaultItemsPerPage);
   }, [pageParam, itemsParam]);
 
   useEffect(() => {
-    const currentUrl = `?page=${currentPage}&itemsPerPage=${itemsPerPage}`;
-    if (currentUrl !== window.location.search) {
-      router.push(currentUrl);
-    }
+    router.push(`?page=${currentPage}&itemsPerPage=${itemsPerPage}`);
   }, [currentPage, itemsPerPage, router]);
 
+  const sortedData = useMemo(() => {
+    if (!data || !sortConfig.key) return data || [];
+    const sorted = [...data];
+    sorted.sort((a, b) => {
+      const aValue = a[sortConfig.key as keyof User];
+      const bValue = b[sortConfig.key as keyof User];
+      if (aValue < bValue) return sortConfig.direction === 'ascending' ? -1 : 1;
+      if (aValue > bValue) return sortConfig.direction === 'ascending' ? 1 : -1;
+      return 0;
+    });
+    return sorted;
+  }, [data, sortConfig]);
+
   const paginatedData = useMemo(() => {
-    if (!data) return [];
+    if (!sortedData) return [];
     const start = (currentPage - 1) * itemsPerPage;
-    return data.slice(start, start + itemsPerPage);
-  }, [data, currentPage, itemsPerPage]);
+    return sortedData.slice(start, start + itemsPerPage);
+  }, [sortedData, currentPage, itemsPerPage]);
 
-  const totalPages = useMemo(() => {
-    if (!data) return 1;
-    return Math.ceil(data.length / itemsPerPage);
-  }, [data, itemsPerPage]);
+  const totalPages = useMemo(() => data ? Math.ceil(data.length / itemsPerPage) : 1, [data, itemsPerPage]);
 
-  const handlePageChange = useCallback((page: number) => {
-    setCurrentPage(page);
+  const handlePageChange = useCallback((page: number) => setCurrentPage(page), []);
+
+  const handleItemsPerPageChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
+    setItemsPerPage(parseInt(event.target.value, 10));
+    setCurrentPage(1);
   }, []);
 
-  const handleItemsPerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const newItemsPerPage = parseInt(event.target.value, 10);
-    if (newItemsPerPage !== itemsPerPage) {
-      setItemsPerPage(newItemsPerPage);
-      setCurrentPage(1); 
-    }
-  };
+  const handleSort = useCallback((key: keyof User, direction: 'ascending' | 'descending') => {
+    setSortConfig({ key, direction });
+  }, []);
 
   const renderPageNumbers = useCallback(() => {
     const pageNumbers = [];
     const ellipsis = <span key="ellipsis" className="ellipsis">...</span>;
 
-    // Handle the case with 5 or fewer pages
     if (totalPages <= 5) {
       for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(
@@ -112,7 +100,6 @@ const UserTable = () => {
       return pageNumbers;
     }
 
-    // Show the first page
     pageNumbers.push(
       <button
         key={1}
@@ -123,12 +110,10 @@ const UserTable = () => {
       </button>
     );
 
-    // Show ellipsis if current page is greater than 4
     if (currentPage > 4) {
       pageNumbers.push(ellipsis);
     }
 
-    // Show pages around the current page
     for (let i = Math.max(2, currentPage - 1); i <= Math.min(currentPage + 1, totalPages - 1); i++) {
       pageNumbers.push(
         <button
@@ -141,12 +126,10 @@ const UserTable = () => {
       );
     }
 
-    // Show ellipsis if current page is less than totalPages - 3
     if (currentPage < totalPages - 3) {
       pageNumbers.push(ellipsis);
     }
 
-    // Show the last page
     pageNumbers.push(
       <button
         key={totalPages}
@@ -160,12 +143,34 @@ const UserTable = () => {
     return pageNumbers;
   }, [currentPage, totalPages, handlePageChange]);
 
+  const handleHeaderClick = useCallback(() => {
+    setIsSortOpen(prev => !prev);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (sortContainerRef.current && !sortContainerRef.current.contains(event.target as Node)) {
+        setIsSortOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
   return (
     <div id='user-data-display'>
-      <Table columns={columns} data={paginatedData} />
+      <Table columns={columns} data={paginatedData} onHeaderClick={handleHeaderClick} />
+
+      {isSortOpen && (
+        <div ref={sortContainerRef}>
+          <TableHeadSort onSort={handleSort} />
+        </div>
+      )}
 
       <section className="pagination-controls">
         <aside id='display-drop-down'>
