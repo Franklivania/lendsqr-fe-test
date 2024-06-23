@@ -24,7 +24,6 @@ export default function UserTable() {
   const sortContainerRef = useRef<HTMLDivElement | null>(null);
   const [actionUserId, setActionUserId] = useState<string | null>(null);
   const actionContainerRef = useRef<HTMLDivElement | null>(null);
-  const [actionPosition, setActionPosition] = useState<{ top: number, left: number } | null>(null);
 
   const baseUrl = `${process.env.NEXT_PUBLIC_URL}`;
   const { data, error, isLoading } = useAxiosData<User[]>(baseUrl);

@@ -1,0 +1,63 @@
+@use "../variables" as vars;
+@use "../colors" as c;
+
+#user-id {
+  position: relative;
+  font-family: vars.$font-sub !important;
+  display: flex;
+  flex-direction: column;
+  gap: 1.357em;
+  
+  h1, h2, h3, h4, h5, p {
+    font-family: vars.$font-sub !important;
+    font-weight: 500;
+  }
+
+  #profile-head {
+    width: vars.$width;
+    background: c.$white;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25em;
+    // padding: 1.857em;
+    border: vars.$very-light-border;
+    border-radius: vars.$radius;
+    overflow: auto;
+    
+    #profile-head-top{
+      width: vars.$width;
+      display: flex;
+      align-items: center;
+      gap: 1.357em;
+      padding: 1.857em;
+      overflow: auto;
+
+      @media (max-width: 1024px) {
+        gap: 5em;
+      }
+
+      aside {
+        small {
+          color: c.$blue;
+          font-size: vars.$text-12;
+        }
+      }
+
+      .hr-line {
+        position: relative;
+        width: 0.15em;
+        height: 5em;
+        background: c.$blue-15;
+      }
+    }
+  }
+
+  #user-id-display {
+    width: vars.$width;
+    padding: 1.357em;
+    background: c.$white;
+    border: vars.$very-light-border;
+    border-radius: vars.$radius;
+    overflow-x: hidden;
+  }
+}

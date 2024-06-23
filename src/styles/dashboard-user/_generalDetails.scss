@@ -1,0 +1,40 @@
+@use "../variables" as vars;
+@use "../colors" as c;
+
+#general-details {
+  position: relative;
+  width: vars.$width;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+
+  small {
+    color: c.$blue;
+    font-family: vars.$font-sub;
+  }
+
+  .section-definer {
+    position: relative;
+    width: vars.$width;
+    padding: 1.35em;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5em;
+    border-bottom: 0.1em solid rgba(c.$dark-blue, 0.3);
+
+    .section-content {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: start;
+      justify-content: start;
+      gap: 3em;
+
+      span {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+      }
+    }
+  }
+}

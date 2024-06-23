@@ -1,0 +1,32 @@
+@use "../variables" as vars;
+@use "../colors" as c;
+
+
+#tab-router {
+  position: relative;
+  width: vars.$width;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 1024px) {
+    gap: 3em;
+  }
+
+  .tab-item {
+    // width: vars.$width;
+    position: relative;
+    padding: 0.25em 1.257em;
+    font-family: vars.$font-sub;
+    font-size: vars.$text-16;
+    color: c.$black-80;
+    border: none;
+    cursor: pointer;
+    transition: color .3s ease-in-out, border .3s ease-in-out;
+    
+    &.active {
+      color: c.$cyan;
+      border-bottom: 0.15em solid c.$cyan;
+    }
+  }
+}

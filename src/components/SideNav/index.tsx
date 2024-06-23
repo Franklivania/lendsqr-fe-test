@@ -14,7 +14,7 @@ export default function SideNav({ ...props }) {
 
   const path = usePathname()
   const isActive = (link: string) => {
-    return path === `/dashboard/${link}`;
+    return path.startsWith(`/dashboard/${link}`);
   }
 
   return (
