@@ -67,6 +67,7 @@ export default function Home() {
             title="SUBMIT"
             variant="primary"
             isLoading={isLoading}
+            className="form-btn"
           />
         </span>
 

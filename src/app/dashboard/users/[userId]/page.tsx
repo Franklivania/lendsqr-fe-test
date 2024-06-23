@@ -70,7 +70,7 @@ export default function UserId() {
             </aside>
             <div className="hr-line" />
             <aside>
-              <Typography.p>User's Tier</Typography.p>
+              <Typography.p>User&apos;s Tier</Typography.p>
             </aside>
             <div className="hr-line" />
             <aside>

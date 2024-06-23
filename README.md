@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a frontend test taken in fulfuilment of the lendsqr frontend aptitude test
 
-## Getting Started
+[Link to website]()
 
-First, run the development server:
+Table Of contents
+- [Introduction](#Introduction)
+  - [Tools used](#tools-used)
+- [My Process](#my-process)
+  - [File Arrangement](#file-arrangement)
+- [Summary](#summary)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Introduction
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This project is built using NextJs, SASS and Mocky.io
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Tools Used
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- NextJs: The fullstack framework used in buidling the UI and consuming the api. The version used was NextJs 14.2.4, using the app router, and typescript.
 
-## Learn More
+- SASS: The styling framwork used for adding style and beauty to the website, responisble for it's display on all screen sizes
 
-To learn more about Next.js, take a look at the following resources:
+- Mocky.io: The mock api generator used in getting the user details that were displayed in the project
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Axios: This was used to fetch the data
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## My Process
 
-## Deploy on Vercel
+In building this test for the web application, I followed these processes
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Analysing the Design: The first thing I did was to look through the design. This process is crucial as I used it to see the components needed, and give me insight to the level of abstraction I needed to do for the application.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Creating the app: Then I bootstraped the application with NextJs, according to specifications.
+
+- Creating of variables and components: After the analysis of the application, I started to pick out the core resources from the figma which are to be used on the application. Then I proceeded to create dynamic resuable components, which were to be used througout the application.
+
+- Building out the UI: Following the specifics of the design, I then proceeded to build out the UI, with the required functionality as seen in the design.
+
+During this process, I had to opt to use axios alone, as @tanstack/react-query was giving me some issues. So, I decided to do everything manually, and optimise the rendering process myself.
+
+I also learned how to use mocky.io. Basically, I had read through the UI, and seen the necessary requirements to make, then I had to generate more dummy Nigerian users, to be able to allow for more roboust feel to the application, then, I wrote code that used the data I had harvested to generate an array of 500 objects, which I then fed to the mock API generator to generate my data.
+
+So, for each use case, each userId remains different, as they were created randomly by code I used to generate random data so as to populate the database.
+
+### File Arrangement
+
+So, this is how the file arrangement looks
+
+![](./public/images/image.png)
+
+## Summary
+
+Building this application, and its responsiveness to ensure maximum functionality was fun, as it helped me learn some new techniques when it comes to code optimisation and handling large data.

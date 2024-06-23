@@ -90,6 +90,10 @@ body {
           letter-spacing: 0.2em;
           font-family: $font;
         }
+
+        .form-btn {
+          width: $width !important;
+        }
       }
     }
   }
