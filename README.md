@@ -1,6 +1,6 @@
 This is a frontend test taken in fulfuilment of the lendsqr frontend aptitude test
 
-[Link to website]()
+[Link to website](https://chibuzo-franklin-odigbo-lendsqr-fe-test.vercel.app)
 
 Table Of contents
 - [Introduction](#Introduction)
