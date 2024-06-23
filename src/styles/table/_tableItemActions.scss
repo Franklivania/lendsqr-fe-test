@@ -1,3 +1,38 @@
 @use "../mixins" as mixins;
 @use "../variables" as vars;
 @use "../colors" as c;
+
+#table-item-actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1.375em;
+  width: 11.25em;
+  border-radius: vars.$radius;
+  background: c.$white;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+  border: vars.$border-10;
+  z-index: 10;
+
+  .action-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    color: c.$blue;
+    font-size: vars.$text-14;
+    cursor: pointer;
+    font-family: vars.$font-sub;
+    transition: transform .3s ease-in-out;
+    transform: scale(1);
+
+    &:hover,
+    &:focus,
+    &:focus-visible,
+    &:focus-within {
+      transform: scale(0.92);
+    }
+  }
+}

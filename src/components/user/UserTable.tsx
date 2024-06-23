@@ -8,29 +8,23 @@ import { User } from '@/types';
 import Typography from '../Typography';
 import { Icon } from '@iconify/react';
 import TableHeadSort from '../table/TableHeadSort';
+import TableItemActions from '../table/TableItemActions';
 
 type SortConfig = {
   key: keyof User | '';
   direction: 'ascending' | 'descending';
 };
 
-const columns = [
-  { title: 'Organization', key: 'organization', render: (data: User) => <span>{data.activities.organization}</span> },
-  { title: 'Username', key: 'username', render: (data: User) => <span>{data.fullName}</span> },
-  { title: 'Email', key: 'email', render: (data: User) => <span>{data.personalInfo.emailAddress}</span> },
-  { title: 'Phone Number', key: 'phoneNumber', render: (data: User) => <span>{data.personalInfo.phoneNumber}</span> },
-  { title: 'Date Joined', key: 'dateJoined', render: (data: User) => <span>{data.activities.dateJoined}</span> },
-  { title: 'Status', key: 'status', render: (data: User) => <span className={`status ${data.activities.status.toLowerCase()}`}>{data.activities.status}</span> },
-  { title: '', key: 'actions', render: (data: User) => <span><Icon icon={"mage:dots"} width={24} color='#545F7D' /></span> },
-];
-
-const UserTable = () => {
+export default function UserTable() {
   const defaultItemsPerPage = 100;
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(defaultItemsPerPage);
   const [sortConfig, setSortConfig] = useState<SortConfig>({ key: '', direction: 'ascending' });
   const [isSortOpen, setIsSortOpen] = useState<boolean>(false);
   const sortContainerRef = useRef<HTMLDivElement | null>(null);
+  const [actionUserId, setActionUserId] = useState<string | null>(null);
+  const actionContainerRef = useRef<HTMLDivElement | null>(null);
+  const [actionPosition, setActionPosition] = useState<{ top: number, left: number } | null>(null);
 
   const baseUrl = `${process.env.NEXT_PUBLIC_URL}`;
   const { data, error, isLoading } = useAxiosData<User[]>(baseUrl);
@@ -147,9 +141,15 @@ const UserTable = () => {
     setIsSortOpen(prev => !prev);
   }, []);
 
+  const handleActionClick = useCallback((userId: string) => {
+    setActionUserId(prev => (prev === userId ? null : userId));
+  }, []);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (sortContainerRef.current && !sortContainerRef.current.contains(event.target as Node)) {
+      if (
+        sortContainerRef.current && !sortContainerRef.current.contains(event.target as Node)
+      ) {
         setIsSortOpen(false);
       }
     };
@@ -159,12 +159,56 @@ const UserTable = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleClickOutsideAction = (event: MouseEvent) => {
+      if (
+        actionContainerRef.current && !actionContainerRef.current.contains(event.target as Node)
+      ) {
+        setActionUserId(null);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutsideAction);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutsideAction);
+    };
+  }, []);
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
 
+  const columns = [
+    { title: 'Organization', key: 'organization', render: (data: User) => <span>{data.activities.organization}</span> },
+    { title: 'Username', key: 'username', render: (data: User) => <span>{data.fullName}</span> },
+    { title: 'Email', key: 'email', render: (data: User) => <span>{data.personalInfo.emailAddress}</span> },
+    { title: 'Phone Number', key: 'phoneNumber', render: (data: User) => <span>{data.personalInfo.phoneNumber}</span> },
+    { title: 'Date Joined', key: 'dateJoined', render: (data: User) => <span>{data.activities.dateJoined}</span> },
+    { title: 'Status', key: 'status', render: (data: User) => <span className={`status ${data.activities.status.toLowerCase()}`}>{data.activities.status}</span> },
+    {
+      title: '', key: 'actions', render: (data: User) => (
+        <span onClick={() => handleActionClick(data.userId)} className='dots'>
+          <Icon icon={"mage:dots"} width={24} color='#545F7D' />
+
+          {actionUserId === data.userId && (
+            <div ref={actionContainerRef}>
+              <TableItemActions userId={actionUserId} />
+            </div>
+          )}
+        </span>
+      )
+    },
+  ];
+
   return (
     <div id='user-data-display'>
-      <Table columns={columns} data={paginatedData} onHeaderClick={handleHeaderClick} />
+      <Table
+        columns={columns.map((col) =>
+          col.key === 'actions'
+            ? { ...col, render: (data: User) => col.render(data) }
+            : col
+        )}
+        data={paginatedData}
+        onHeaderClick={handleHeaderClick}
+      />
 
       {isSortOpen && (
         <div ref={sortContainerRef}>
@@ -205,5 +249,3 @@ const UserTable = () => {
     </div>
   );
 };
-
-export default UserTable;
