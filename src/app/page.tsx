@@ -27,7 +27,7 @@ export default function Home() {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      router.push('/dashboard');
+      router.push('/dashboard/users');
     }, 1000);
   };
 

@@ -9,14 +9,15 @@
   justify-content: center;
   outline: none;
   resize: none;
-  width: vars.$width;
-  padding: 0.8em 0;
+  width: max-content;
+  padding: 0.8em 1.2em;
   border-radius: vars.$radius;
   font-family: vars.$font;
   font-size: 0.875em;
   letter-spacing: 0.1em;
   font-weight: 600;
   cursor: pointer;
+  background: transparent;
 
   &.primary {
     border: vars.$cyan-border;

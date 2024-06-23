@@ -9,6 +9,8 @@ import Image from "next/image";
 import userAvatar from "../../../../../public/images/userAvatar.svg";
 import TabRouter from "@/components/userComponents/TabRouter";
 import UserIdComponents from "@/components/userComponents";
+import { Icon } from "@iconify/react/dist/iconify.js";
+import Button from "@/components/button";
 
 export default function UserId() {
   const { userId } = useParams<{ userId: string }>();
@@ -43,12 +45,28 @@ export default function UserId() {
   return (
     <DashboardContainer>
       <div id="user-id">
+        <section id="user-controls">
+          <Typography.p onClick={() => router.back()} style={{ cursor: "pointer" }}>
+            <Icon icon={"teenyicons:arrow-left-solid"} width={24} />
+            Back to users
+          </Typography.p>
+
+          <div id="user-controls-header">
+            <Typography.h2>User Details</Typography.h2>
+
+            <aside>
+              <Button type="button" variant="red" title="BLACKLIST USER" />
+              <Button type="button" variant="secondary" title="ACTIVATE USER" />
+            </aside>
+          </div>
+        </section>
+
         <section id="profile-head">
           <div id="profile-head-top">
             <Image src={userAvatar} width={50} height={50} alt={user.fullName} title={user.fullName} />
             <aside>
               <Typography.h2>{user.fullName}</Typography.h2>
-              <Typography.p>{user.userId}</Typography.p>
+              <small>{user.userId}</small>
             </aside>
             <div className="hr-line" />
             <aside>

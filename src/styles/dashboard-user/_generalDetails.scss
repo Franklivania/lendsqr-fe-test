@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.25em;
+  overflow: auto;
 
   small {
     color: c.$blue;
@@ -24,11 +25,17 @@
 
     .section-content {
       position: relative;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: start;
-      justify-content: start;
+      display: grid;
+      grid-template-columns: minmax(9.375em, max-content) repeat(auto-fill, 11.25em) 15%;
       gap: 3em;
+      
+      @media (max-width: 768px) {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: start;
+        justify-content: start;
+        
+      }
 
       span {
         display: flex;

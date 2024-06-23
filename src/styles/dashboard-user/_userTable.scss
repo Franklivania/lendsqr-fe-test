@@ -37,9 +37,15 @@
     position: relative;
     width: vars.$width;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     margin: 1.5em 0;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+      gap: 1em;
+    }
 
     #display-drop-down {
       display: flex;

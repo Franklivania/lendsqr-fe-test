@@ -6,7 +6,6 @@
   width: vars.$width;
   display: flex;
   align-items: center;
-  // justify-content: space-between;
   padding: 1.8em;
   box-shadow: vars.$shadow-lg;
 
@@ -56,6 +55,13 @@
 
       .image {
         margin: 0 0.5em 0 0;
+      }
+
+      h4{
+        display: block;
+        @media (max-width: 768px) {
+          display: none;
+        }
       }
     }
   }

@@ -78,7 +78,7 @@ export default function GeneralDetails({ user }: { user: User }) {
           </span>
           <span>
             <small>LOAN REPAYMENT</small>
-            <Typography.h4>{user.employment.loanRepayment}</Typography.h4>
+            <Typography.h4>{addCommas(user.employment.loanRepayment)}</Typography.h4>
           </span>
         </div>
       </section>
@@ -123,7 +123,7 @@ export default function GeneralDetails({ user }: { user: User }) {
         </div>
       </section>
       <section className="section-definer">
-        {/* <Typography.h4>Guarantor</Typography.h4> */}
+        <br />
 
         <div className="section-content">
           <span>
